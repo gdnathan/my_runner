@@ -9,6 +9,6 @@
 
 int infinite_mode(void)
 {
-    my_putstr("infinite mode!");
+    my_putstr("infinite mode!\n");
     return (0);
 }
