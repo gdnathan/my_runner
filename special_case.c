@@ -22,4 +22,5 @@ int special_case(char *arg)
         my_putstr("Wrong token\n\n");
         my_putstr(msg);
     }
+    return (ERROR);
 }

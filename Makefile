@@ -9,7 +9,9 @@ SRC		=	main.c				\
 			core.c				\
 			infinite_mode.c		\
 			errors.c			\
-			special_case.c
+			special_case.c		\
+			init.c				\
+			physic.c
 
 OBJ	    =	$(SRC:.c=.o)
 
@@ -25,18 +27,18 @@ DOLIB:
 	$(MAKE) -C ./lib/my
 
 $(NAME): DOLIB $(OBJ)
-	$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(LIB)
+	$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(LIB) -l csfml-graphics -l csfml-system -lm -ldl
 
 
 clean:
 	rm -f $(OBJ)
 	$(MAKE) clean -C lib/my
 
-debug:	fclean $(LIB) $(OBJ)
-	$(CC) $(SRC) $(LIB) -W -Wall -Wextra -g
+debug:	DOLIB
+	$(CC) -o my_runner $(SRC) $(CFLAGS) $(LIB) -l csfml-graphics -l csfml-system -lm -ldl -W -Wall -Wextra -g
 
 test: fclean $(LIB) $(OBJ)
-	$(CC) -o unit_tests $(SRC) $(LIB) tests/test.c --coverage -lcriterion
+	$(CC) -o unit_tests -Iinclude $(SRC) $(LIB) tests/test.c --coverage -lcriterion
 
 fclean:	clean
 	rm -f $(NAME) *.gc*

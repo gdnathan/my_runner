@@ -10,8 +10,8 @@
 int errors(int arg_nb, char **env)
 {
     if (arg_nb > 2)
-        return (84);
+        return (ERROR);
     if (env[0] == NULL)
-        return (84);
+        return (ERROR);
     return (0);
 }
