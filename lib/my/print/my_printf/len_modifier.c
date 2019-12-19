@@ -9,15 +9,15 @@
 
 int longint(char *params, va_list data, int i, int nb)
 {
-    long int l;
+    long int li;
     long long int ll;
-    if (params[i] == 'l' && params[i + 1] != 'l') {
-        l = va_arg(data, long int);
-        long_buff(l, nb);
-        my_putlongnbr(l);
+    if (params[i] == 'li' && params[i + 1] != 'li') {
+        li = va_arg(data, long int);
+        long_buff(li, nb);
+        my_putlongnbr(li);
         return (1);
     }
-    if (params[i] == 'l' && params[i + 1] == 'l') {
+    if (params[i] == 'li' && params[i + 1] == 'li') {
         ll = va_arg(data, long long int);
         long_buff(ll, nb);
         my_putlonglongnbr(ll);

@@ -10,6 +10,7 @@
 char *my_strncpy(char *dest, char const *src, int n)
 {
     int i = 0;
+
     while (src[n] != '\0'){
         dest[i] = src[n];
         i += 1;

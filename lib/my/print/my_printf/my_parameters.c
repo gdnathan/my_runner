@@ -11,7 +11,7 @@ int parameters(char *str, int i, char *params)
 {
     char *buffer;
     int j = 0;
-    buffer = my_strncpy(my_strdup(str, my_strlen(str)), i + 1);
+    buffer = my_strncpy(my_strdup(str, my_strlen(str)), buffer, i + 1);
     int nb = my_getnbr(buffer);
 
     while (nb > 0) {

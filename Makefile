@@ -5,13 +5,17 @@
 ## makefile for infadd prog
 ##
 
-SRC		=	main.c				\
-			core.c				\
-			infinite_mode.c		\
-			errors.c			\
-			special_case.c		\
-			init.c				\
-			physic.c
+SRC		=	src/main.c									\
+			src/core.c									\
+			src/infinite_mode.c							\
+			src/errors.c								\
+			src/special_case.c							\
+			src/initialisation/init_game.c				\
+			src/initialisation/init_player.c			\
+			src/initialisation/init_fireball.c			\
+			src/player_physic.c							\
+			src/paralax.c								\
+			src/fireball.c
 
 OBJ	    =	$(SRC:.c=.o)
 
@@ -21,13 +25,13 @@ LIB     =	-Llib/my -lmy
 
 CFLAGS	=	-Iinclude
 
-all:	$(NAME)
+all:	$(NAME) clean
 
 DOLIB:
 	$(MAKE) -C ./lib/my
 
 $(NAME): DOLIB $(OBJ)
-	$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(LIB) -l csfml-graphics -l csfml-system -lm -ldl
+	$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(LIB) -l csfml-graphics -l csfml-system -l csfml-window -lm -ldl
 
 
 clean:
@@ -35,7 +39,7 @@ clean:
 	$(MAKE) clean -C lib/my
 
 debug:	DOLIB
-	$(CC) -o my_runner $(SRC) $(CFLAGS) $(LIB) -l csfml-graphics -l csfml-system -lm -ldl -W -Wall -Wextra -g
+	$(CC) -o my_runner $(SRC) $(CFLAGS) $(LIB) -l csfml-graphics -l csfml-system -l csfml-window -lm -ldl -W -Wall -Wextra -g
 
 test: fclean $(LIB) $(OBJ)
 	$(CC) -o unit_tests -Iinclude $(SRC) $(LIB) tests/test.c --coverage -lcriterion

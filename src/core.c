@@ -13,11 +13,14 @@ int core(void)
     csfml_t info;
     player_t player;
     background_t bg;
+    int status = 0;
 
     init_info(&info);
     init_background(&bg);
     init_player(&player);
-    return (game(&info, &player, &bg));
+    status = game(&info, &player, &bg);
+    free_all(&info);
+    return (status);
 }
 
 int game(csfml_t *info, player_t *player, background_t *bg)
@@ -36,6 +39,12 @@ int game(csfml_t *info, player_t *player, background_t *bg)
 int run_game(csfml_t *info, player_t *player, background_t *bg)
 {
     disp_bg(info, bg);
-    move_player(info, player);
+    gest_player(info, player);
+    sfRenderWindow_display(info->window);
     return (0);
+}
+
+void free_all(csfml_t *info)
+{
+    return;
 }

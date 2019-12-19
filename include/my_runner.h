@@ -7,11 +7,14 @@
 
 #include "../lib/my/include/my.h"
 #include "csfml.h"
+#include "game_parameters.h"
 
 #ifndef MY_RUNNER_H_
 #define MY_RUNNER_H_
 
 //STRUCTURES
+
+typedef int bool;
 
 typedef struct my_clock
 {
@@ -19,6 +22,7 @@ typedef struct my_clock
     sfClock *enemy_spawn_time;
     sfClock *bg_anim;
     sfClock *player_anim;
+    sfClock *fireball_as;
     sfClock *fireball_anim;
     sfClock *enemy_anim;
 } my_clock_t;
@@ -27,9 +31,29 @@ typedef struct csfml_info
 {
     sfRenderWindow *window;
     sfEvent my_event;
+    sfKeyEvent my_keyEvent;
     my_clock_t *clock;
     sfEvent event;
 } csfml_t;
+
+typedef struct health
+{
+    sfTexture *texture;
+    sfSprite *sprite;
+    int hp;
+    struct health *next;
+    struct health *prev;
+} health_t;
+
+typedef struct fireball
+{
+    sfTexture *texture;
+    sfSprite *sprite;
+    sfIntRect *rect;
+    sfVector2f *pos;
+    bool used;
+    struct fireball *next;
+} fireball_t;
 
 typedef struct player
 {
@@ -37,16 +61,11 @@ typedef struct player
     sfSprite *sprite;
     sfVector2f *pos;
     sfIntRect *rect;
-    int hp;
-    int gravity;
+    float gravity;
+    int score;
+    health_t *health;
+    fireball_t *fireball;
 } player_t;
-
-typedef struct fireball
-{
-    sfTexture *texture;
-    sfSprite *sprite;
-    sfVector2f *pos;
-} fireball_t;
 
 typedef struct background
 {
@@ -60,7 +79,7 @@ typedef struct background
     struct background *prev;
 } background_t;
 
-
+//proto 
 
 int special_case(char *arg);
 int infinite_mode(void);
@@ -78,10 +97,20 @@ void init_foreground(background_t *bg);
 int game(csfml_t *info, player_t *player, background_t *bg);
 int run_game(csfml_t *info, player_t *player, background_t *bg);
 void display_player(csfml_t *info, player_t *player);
+fireball_t *init_fireball(sfVector2f *pos);
+void free_all(csfml_t *info);
+int game_parameters(void);
+void launch_fireball(csfml_t *info, player_t *player);
+void gest_player(csfml_t *info, player_t *player);
+void new_fireball(fireball_t **fireball, sfVector2f *pos);
+
+
+//defines
 
 #define LOSE (-1)
 #define WIN (1)
-#define TRUE (1)
-#define FALSE (0)
+#define true (1)
+#define false (0)
 #define ERROR (84)
+
 #endif /* !MY_RUNNER_H_ */
