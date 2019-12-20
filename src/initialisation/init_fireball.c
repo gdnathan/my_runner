@@ -18,10 +18,6 @@ void new_fireball(fireball_t **fireball, sfVector2f *pos)
         *fireball = init_fireball(pos);
     } else {
         new = *fireball;
-        //
-        // PROBLEME:
-        // new = *fireball ne fonctionne pas, les deux adresses diffèrent
-        //
         while (new->next != NULL){
             new = new->next;
         }
@@ -50,6 +46,7 @@ fireball_t *init_fireball(sfVector2f *pos)
     new->pos->x = pos->x;
     new->pos->y = pos->y;
     new->used = false;
+    new->next = NULL;
     sfSprite_setTexture(new->sprite, new->texture,
                         sfTrue);
     return (new);
