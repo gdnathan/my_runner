@@ -11,24 +11,26 @@
 
 void launch_fireball(csfml_t *info, player_t *player)
 {
-    fireball_t *tmp;
     sfEvent event;
     sfTime time = sfClock_getElapsedTime(info->clock->fireball_as);
 
     sfRenderWindow_pollEvent(info->window, &event);
-    if (sfKeyboard_isKeyPressed(sfKeyE) && time.microseconds >= 100000){
+    if (sfKeyboard_isKeyPressed(sfKeyE) && time.microseconds >= 500000){
         new_fireball(&player->fireball, player->pos);
         sfClock_restart(info->clock->fireball_as);
     }
     if (player->fireball == NULL)
         return;
-    tmp = player->fireball;
+    anim_fireball(&player->fireball, info);
 }
 
-void anim_fireball(fireball_t *tmp,  csfml_t *info)
+void anim_fireball(fireball_t **fireball,  csfml_t *info)
 {
-    while (tmp->next != NULL) {
-        tmp->pos->y += 3;
+    fireball_t *tmp = *fireball;
+    fireball_t *del = *fireball;
+
+    while (tmp != NULL) {
+        tmp->pos->x += 20;
         tmp->rect->left += 75;
         if (tmp->rect->left >= 300)
             tmp->rect->left = 0;
@@ -36,6 +38,10 @@ void anim_fireball(fireball_t *tmp,  csfml_t *info)
         sfSprite_setPosition(tmp->sprite, *tmp->pos);
         sfRenderWindow_drawSprite(info->window, tmp->sprite, NULL);
         tmp = tmp->next;
-        tmp->next = NULL;
     }
+    if ((*fireball)->pos->x > 1267) {
+        *fireball = (*fireball)->next;
+        free (del);
+    }
+    free (tmp);
 }
