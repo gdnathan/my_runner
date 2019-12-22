@@ -69,6 +69,20 @@ typedef struct player
     fireball_t *fireball;
 } player_t;
 
+typedef struct enemy
+{
+    sfTexture *texture;
+    sfSprite *sprite;
+    sfVector2f *pos;
+    sfIntRect *rect;
+    bool destroyed;
+} enemy_t;
+
+typedef struct obj
+{
+    player_t *player;
+    enemy_t *enemy;
+} obj_t;
 typedef struct background
 {
     sfTexture *texture_back;
@@ -93,11 +107,11 @@ void move_player(csfml_t *info, player_t *player);
 void disp_bg(csfml_t *info, background_t *bg);
 void init_info(csfml_t *info);
 sfRenderWindow *create_window(int width, int height);
-void init_player(player_t *player);
+void init_player(player_t **player);
 void init_background(background_t *bg);
 void init_foreground(background_t *bg);
-int game(csfml_t *info, player_t *player, background_t *bg);
-int run_game(csfml_t *info, player_t *player, background_t *bg);
+int game(csfml_t *info, obj_t *obj, background_t *bg);
+int run_game(csfml_t *info, obj_t *obj, background_t *bg);
 void display_player(csfml_t *info, player_t *player);
 fireball_t *init_fireball(sfVector2f *pos);
 void free_all(csfml_t *info);
@@ -109,6 +123,9 @@ void anim_fireball(fireball_t **,  csfml_t *info);
 void scale_score(csfml_t *info, player_t *player);
 char *infin_add(char *score, int new_value);
 void init_txt(csfml_t *info);
+void init_obj(obj_t *obj);
+
+
 //defines
 
 #define LOSE (-1)

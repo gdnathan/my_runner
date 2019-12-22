@@ -1,2 +1,4 @@
 *.o
 *.a
+my_runner
+.gitignore
