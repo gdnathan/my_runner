@@ -12,7 +12,6 @@ void gest_player(csfml_t *info, player_t *player)
 {
     move_player(info, player);
     animate_player(info, player);
-    //current_life(info, player);
     launch_fireball(info, player);
 }
 

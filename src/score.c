@@ -14,7 +14,6 @@ void scale_score(csfml_t *info, player_t *player)
 
     if (time.microseconds > 1000000) {
         player->score = infin_add(player->score, 1);
-        printf("%s\n", player->score);
         sfClock_restart(info->clock->compute_score);
     }
     sfText_setString(info->txt, player->score);
