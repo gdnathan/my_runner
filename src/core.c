@@ -18,7 +18,7 @@ int core(void)
 
     init_info(&info);
     init_background(&bg);
-    init_obj(&obj);
+    init_player(&obj.player);
     status = game(&info, &obj, &bg);
     free_all(&info);
     return (status);
