@@ -13,5 +13,6 @@
 #include <SFML/Graphics/Texture.h>
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/Window/Keyboard.h>
+#include <SFML/Graphics/Text.h>
 
 #endif /* !MYCSFML_H_ */

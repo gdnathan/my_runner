@@ -17,6 +17,8 @@ void init_info(csfml_t *info)
     info->clock->bg_anim = sfClock_create();
     info->clock->player_anim = sfClock_create();
     info->clock->fireball_as = sfClock_create();
+    info->clock->compute_score = sfClock_create();
+    init_txt(info);
 }
 
 sfRenderWindow *create_window(int width, int height)
@@ -65,4 +67,15 @@ void init_foreground(background_t *bg)
     bg->next->pos_fore->y = 0;
     sfSprite_setTexture(bg->sprite_fore, bg->texture_fore, sfTrue);
     sfSprite_setTexture(bg->next->sprite_fore, bg->next->texture_fore, sfTrue);
+}
+
+void init_txt(csfml_t *info)
+{
+    sfFont *font = sfFont_createFromFile("data/Amatic-Bold.ttf");
+
+    info->txt = sfText_create();
+    sfText_setFont(info->txt, font);
+    sfText_setColor(info->txt, sfWhite);
+    sfText_setLetterSpacing(info->txt, 2);
+    sfText_setCharacterSize(info->txt, 50);
 }

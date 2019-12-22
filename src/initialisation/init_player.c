@@ -10,6 +10,8 @@
 
 void init_player(player_t *player)
 {
+    int i = 0;
+
     player->pos = malloc(sizeof(sfVector2f));
     player->rect = malloc(sizeof(sfIntRect));
     player->texture = sfTexture_createFromFile("data/fire_mage_move.png", NULL);
@@ -22,6 +24,7 @@ void init_player(player_t *player)
     player->rect->top = 0;
     player->gravity = 0;
     player->fireball = NULL;
+    player->score = my_strdup("00000", 5);
     sfSprite_setTexture(player->sprite, player->texture, sfTrue);
     //init_health(player);
 }

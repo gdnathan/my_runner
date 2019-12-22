@@ -9,5 +9,6 @@
 #define GAME_PARAMETERS_H_
 
 #define MAX_FIREBALL (2)
+#define MAX_HP (3)
 
 #endif /* !GAME_PARAMETERS_H_ */

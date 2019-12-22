@@ -25,6 +25,7 @@ typedef struct my_clock
     sfClock *fireball_as;
     sfClock *fireball_anim;
     sfClock *enemy_anim;
+    sfClock *compute_score;
 } my_clock_t;
 
 typedef struct csfml_info
@@ -34,6 +35,7 @@ typedef struct csfml_info
     sfKeyEvent my_keyEvent;
     my_clock_t *clock;
     sfEvent event;
+    sfText *txt;
 } csfml_t;
 
 typedef struct health
@@ -62,7 +64,7 @@ typedef struct player
     sfVector2f *pos;
     sfIntRect *rect;
     float gravity;
-    int score;
+    char *score;
     health_t *health;
     fireball_t *fireball;
 } player_t;
@@ -79,7 +81,7 @@ typedef struct background
     struct background *prev;
 } background_t;
 
-//proto 
+//proto
 
 int special_case(char *arg);
 int infinite_mode(void);
@@ -103,8 +105,10 @@ int game_parameters(void);
 void launch_fireball(csfml_t *info, player_t *player);
 void gest_player(csfml_t *info, player_t *player);
 void new_fireball(fireball_t **fireball, sfVector2f *pos);
-
-
+void anim_fireball(fireball_t **,  csfml_t *info);
+void scale_score(csfml_t *info, player_t *player);
+char *infin_add(char *score, int new_value);
+void init_txt(csfml_t *info);
 //defines
 
 #define LOSE (-1)

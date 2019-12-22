@@ -15,7 +15,8 @@ SRC		=	src/main.c									\
 			src/initialisation/init_fireball.c			\
 			src/player_physic.c							\
 			src/paralax.c								\
-			src/fireball.c
+			src/fireball.c								\
+			src/score.c
 
 OBJ	    =	$(SRC:.c=.o)
 
@@ -31,7 +32,7 @@ DOLIB:
 	$(MAKE) -C ./lib/my
 
 $(NAME): DOLIB $(OBJ)
-	$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(LIB) -l csfml-graphics -l csfml-system -l csfml-window -lm -ldl
+	$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(LIB) -l csfml-graphics -l csfml-system -l csfml-window -l csfml-graphics -lm -ldl
 
 
 clean:
@@ -39,7 +40,7 @@ clean:
 	$(MAKE) clean -C lib/my
 
 debug:	DOLIB
-	$(CC) -o my_runner $(SRC) $(CFLAGS) $(LIB) -l csfml-graphics -l csfml-system -l csfml-window -lm -ldl -W -Wall -Wextra -g
+	$(CC) -o my_runner $(SRC) $(CFLAGS) $(LIB) -l csfml-graphics -l csfml-system -l csfml-window -l csfml-graphics -lm -ldl -W -Wall -Wextra -g
 
 test: fclean $(LIB) $(OBJ)
 	$(CC) -o unit_tests -Iinclude $(SRC) $(LIB) tests/test.c --coverage -lcriterion

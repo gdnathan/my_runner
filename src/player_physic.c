@@ -22,7 +22,7 @@ void move_player(csfml_t *info, player_t *player)
     && player->pos->y > 50) {
         player->gravity -= 1.2;
     }
-    else if (player->gravity < 10 && player->pos->y < 355) {
+    else if (player->gravity < 8.5 && player->pos->y < 355) {
         player->gravity += 1;
     }
     if (player->pos->y > 356 && !sfKeyboard_isKeyPressed(sfKeySpace))

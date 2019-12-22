@@ -40,6 +40,7 @@ int run_game(csfml_t *info, player_t *player, background_t *bg)
 {
     disp_bg(info, bg);
     gest_player(info, player);
+    scale_score(info, player);
     sfRenderWindow_display(info->window);
     return (0);
 }
