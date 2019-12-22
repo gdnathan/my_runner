@@ -72,10 +72,13 @@ void init_foreground(background_t *bg)
 void init_txt(csfml_t *info)
 {
     sfFont *font = sfFont_createFromFile("data/Amatic-Bold.ttf");
+    sfVector2f pos;
 
+    pos.x = 20;
+    pos.y = 5;
     info->txt = sfText_create();
     sfText_setFont(info->txt, font);
     sfText_setColor(info->txt, sfWhite);
-    sfText_setLetterSpacing(info->txt, 2);
+    sfText_setPosition(info->txt, pos);
     sfText_setCharacterSize(info->txt, 50);
 }
