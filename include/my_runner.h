@@ -127,6 +127,7 @@ void init_enemy(enemy_t **enemy);
 void init_obj(obj_t *obj);
 void anim_bg(csfml_t *info, background_t *bg);
 void spawn_enemies(csfml_t *info, obj_t *obj);
+void display_fireball(csfml_t *info, fireball_t *fireball);
 
 
 //defines
