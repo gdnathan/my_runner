@@ -9,18 +9,36 @@
 #include "my_runner.h"
 #include "game_parameters.h"
 
-void init_enemy(enemy_t **enemy)
+void new_enemy(enemy_t **enemy)
 {
-    (*enemy) = malloc(sizeof(enemy_t));
-    (*enemy)->pos = malloc(sizeof(sfVector2f));
-    (*enemy)->rect = malloc(sizeof(sfIntRect));
-    (*enemy)->texture = sfTexture_createFromFile("data/enemy.png", NULL);
-    (*enemy)->sprite = sfSprite_create();
-    (*enemy)->pos->x = 2534;
-    (*enemy)->pos->y = rand() % (440 - 40) + 40;
-    (*enemy)->rect->height = 100;
-    (*enemy)->rect->width = 135;
-    (*enemy)->rect->left = 0;
-    (*enemy)->rect->top = 0;
-    sfSprite_setTexture((*enemy)->sprite, (*enemy)->texture, sfTrue);
+    enemy_t *new = NULL;
+
+    if (*enemy == NULL) {
+        *enemy = init_enemy();
+    } else {
+        new = *enemy;
+        while (new->next != NULL){
+            new = new->next;
+        }
+        new->next = init_enemy();
+    }
+}
+
+enemy_t *init_enemy(void)
+{
+    enemy_t *new = malloc(sizeof(enemy_t));
+
+    new->pos = malloc(sizeof(sfVector2f));
+    new->rect = malloc(sizeof(sfIntRect));
+    new->texture = sfTexture_createFromFile("data/enemy.png", NULL);
+    new->sprite = sfSprite_create();
+    new->pos->x = WINDOW_LEN;
+    new->pos->y = rand() % (355 - 50) + 50;
+    new->rect->height = 100;
+    new->rect->width = 135;
+    new->rect->left = 0;
+    new->rect->top = 0;
+    new->next = NULL;
+    sfSprite_setTexture(new->sprite, new->texture, sfTrue);
+    return (new);
 }

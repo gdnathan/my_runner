@@ -41,7 +41,7 @@ int run_game(csfml_t *info, obj_t *obj, background_t *bg)
 {
     anim_bg(info, bg);
     gest_player(info, obj->player);
-    spawn_enemies(info, obj);
+    spawn_enemies(info, &obj->enemy);
     scale_score(info, obj->player);
     sfRenderWindow_display(info->window);
     return (0);

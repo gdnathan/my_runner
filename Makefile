@@ -6,16 +6,16 @@
 ##
 
 SRC		=	src/main.c									\
-			src/core.c									\
-			src/infinite_mode.c							\
-			src/errors.c								\
-			src/special_case.c							\
 			src/initialisation/init_game.c				\
 			src/initialisation/init_player.c			\
 			src/initialisation/init_fireball.c			\
 			src/initialisation/init_enemy.c				\
 			src/initialisation/init_obj.c				\
 			src/initialisation/init_background.c		\
+			src/core.c									\
+			src/infinite_mode.c							\
+			src/errors.c								\
+			src/special_case.c							\
 			src/player_physic.c							\
 			src/paralax.c								\
 			src/fireball.c								\

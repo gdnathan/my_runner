@@ -37,7 +37,7 @@ void anim_fireball(fireball_t **fireball,  csfml_t *info)
             tmp->rect->left = 0;
         tmp = tmp->next;
     }
-    if ((*fireball)->pos->x > 1267) {
+    if ((*fireball)->pos->x > WINDOW_LEN) {
         *fireball = (*fireball)->next;
         free (del);
     }
@@ -50,14 +50,12 @@ void anim_fireball(fireball_t **fireball,  csfml_t *info)
 void display_fireball(csfml_t *info, fireball_t *fireball)
 {
     fireball_t *tmp = fireball;
-    int i = 0;
 
     while (tmp != NULL) {
         sfSprite_setTextureRect(tmp->sprite, *tmp->rect);
         sfSprite_setPosition(tmp->sprite, *tmp->pos);
         sfRenderWindow_drawSprite(info->window, tmp->sprite, NULL);
         tmp = tmp->next;
-        i += 1;
     }
     free (tmp);
 }

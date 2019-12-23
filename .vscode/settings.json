@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "csfml.h": "c",
-        "my_runner.h": "c"
+        "my_runner.h": "c",
+        "game_parameters.h": "c"
     }
 }

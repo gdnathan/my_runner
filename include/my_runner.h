@@ -76,6 +76,7 @@ typedef struct enemy
     sfVector2f *pos;
     sfIntRect *rect;
     bool destroyed;
+    struct enemy *next;
 } enemy_t;
 
 typedef struct obj
@@ -123,12 +124,14 @@ void anim_fireball(fireball_t **,  csfml_t *info);
 void scale_score(csfml_t *info, player_t *player);
 char *infin_add(char *score, int new_value);
 void init_txt(csfml_t *info);
-void init_enemy(enemy_t **enemy);
+enemy_t *init_enemy(void);
 void init_obj(obj_t *obj);
 void anim_bg(csfml_t *info, background_t *bg);
-void spawn_enemies(csfml_t *info, obj_t *obj);
+void spawn_enemies(csfml_t *info, enemy_t **);
 void display_fireball(csfml_t *info, fireball_t *fireball);
-
+void anim_enemy(enemy_t **enemy,  csfml_t *info);
+void display_enemy(csfml_t *info, enemy_t *enemy);
+void new_enemy(enemy_t **enemy);
 
 //defines
 

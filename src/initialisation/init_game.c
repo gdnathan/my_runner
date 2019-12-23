@@ -11,7 +11,7 @@
 void init_info(csfml_t *info)
 {
     info->clock = malloc(sizeof(my_clock_t));
-    info->window = create_window(1267, 481);
+    info->window = create_window(WINDOW_LEN, 481);
     sfRenderWindow_setFramerateLimit(info->window, 30);
     info->clock->time_elapsed = sfClock_create();
     info->clock->bg_anim = sfClock_create();

@@ -12,7 +12,6 @@
 void new_fireball(fireball_t **fireball, sfVector2f *pos)
 {
     fireball_t *new = NULL;
-    fireball_t *tmp = NULL;
 
     if (*fireball == NULL) {
         *fireball = init_fireball(pos);
@@ -22,11 +21,6 @@ void new_fireball(fireball_t **fireball, sfVector2f *pos)
             new = new->next;
         }
         new->next = init_fireball(pos);
-    }
-    if ((*fireball)->used == true) {
-        tmp = *fireball;
-        *fireball = (*fireball)->next;
-        free (tmp);
     }
 }
 
