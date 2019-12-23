@@ -18,7 +18,7 @@ int core(void)
 
     init_info(&info);
     init_background(&bg);
-    init_player(&obj.player);
+    init_obj(&obj);
     status = game(&info, &obj, &bg);
     free_all(&info);
     return (status);
@@ -39,8 +39,9 @@ int game(csfml_t *info, obj_t *obj, background_t *bg)
 
 int run_game(csfml_t *info, obj_t *obj, background_t *bg)
 {
-    disp_bg(info, bg);
+    anim_bg(info, bg);
     gest_player(info, obj->player);
+    spawn_enemies(info, obj);
     scale_score(info, obj->player);
     sfRenderWindow_display(info->window);
     return (0);

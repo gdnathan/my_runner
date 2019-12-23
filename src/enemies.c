@@ -2,14 +2,13 @@
 ** EPITECH PROJECT, 2019
 ** MUL_my_runner_2019
 ** File description:
-** init_obj
+** enemies
 */
 
 #include "my_runner.h"
 #include "csfml.h"
 
-void init_obj(obj_t *obj)
+void spawn_enemies(csfml_t *info, obj_t *obj)
 {
-    init_player(&obj->player);
-    obj->enemy = NULL;
+    
 }

@@ -19,13 +19,13 @@ typedef int bool;
 typedef struct my_clock
 {
     sfClock *time_elapsed;
-    sfClock *enemy_spawn_time;
     sfClock *bg_anim;
     sfClock *player_anim;
     sfClock *fireball_as;
     sfClock *fireball_anim;
     sfClock *enemy_anim;
     sfClock *compute_score;
+    sfClock *enemies_spawn;
 } my_clock_t;
 
 typedef struct csfml_info
@@ -123,7 +123,10 @@ void anim_fireball(fireball_t **,  csfml_t *info);
 void scale_score(csfml_t *info, player_t *player);
 char *infin_add(char *score, int new_value);
 void init_txt(csfml_t *info);
+void init_enemy(enemy_t **enemy);
 void init_obj(obj_t *obj);
+void anim_bg(csfml_t *info, background_t *bg);
+void spawn_enemies(csfml_t *info, obj_t *obj);
 
 
 //defines
