@@ -17,10 +17,10 @@ base_string_manipulation/my_strcmp.c        \
 base_string_manipulation/my_strcpy.c        \
 base_string_manipulation/my_strdup.c        \
 base_string_manipulation/my_strlen.c        \
-base_string_manipulation/my_strncat.c         \
-base_string_manipulation/my_strncmp.c         \
-base_string_manipulation/my_strncpy.c         \
-
+base_string_manipulation/my_strncat.c       \
+base_string_manipulation/my_strncmp.c       \
+base_string_manipulation/my_strncpy.c       \
+maths/dist.c								\
 
 ##here are all function of the lib.
 ##move them under SRC to start to use them

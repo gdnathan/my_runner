@@ -14,14 +14,14 @@ void anim_bg(csfml_t *info, background_t *bg)
 
     if (time.microseconds < 10000)
         return;
-    bg->pos_back->x -= 2;
-    bg->next->pos_back->x -= 2;
+    bg->pos_back->x -= 2 * (DIFFICULTY + 1);
+    bg->next->pos_back->x -= 2 * (DIFFICULTY + 1);
     if (bg->pos_back->x < -2534)
         bg->pos_back->x = 2534;
     if (bg->next->pos_back->x < -2534)
         bg->next->pos_back->x = 2534;
-    bg->pos_fore->x -= 5;
-    bg->next->pos_fore->x -= 5;
+    bg->pos_fore->x -= 5 * (DIFFICULTY + 1);
+    bg->next->pos_fore->x -= 5 * (DIFFICULTY + 1);
     if (bg->pos_fore->x < -2534)
         bg->pos_fore->x = bg->next->pos_fore->x + 2534;
     if (bg->next->pos_fore->x < -2534)

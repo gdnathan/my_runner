@@ -20,7 +20,9 @@ SRC		=	src/main.c									\
 			src/paralax.c								\
 			src/fireball.c								\
 			src/score.c									\
-			src/enemies.c
+			src/enemies.c								\
+			src/collision.c								\
+			src/free.c 									\
 
 OBJ	    =	$(SRC:.c=.o)
 

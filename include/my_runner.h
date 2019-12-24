@@ -75,7 +75,8 @@ typedef struct enemy
     sfSprite *sprite;
     sfVector2f *pos;
     sfIntRect *rect;
-    bool destroyed;
+    bool hited_by_player;
+    int health;
     struct enemy *next;
 } enemy_t;
 
@@ -104,7 +105,7 @@ int core(void);
 int errors(int arg_nb, char **env);
 sfRenderWindow *create_window(int width, int height);
 void animate_player(csfml_t *info, player_t *player);
-void move_player(csfml_t *info, player_t *player);
+void move_player(player_t *player);
 void disp_bg(csfml_t *info, background_t *bg);
 void init_info(csfml_t *info);
 sfRenderWindow *create_window(int width, int height);
@@ -115,7 +116,7 @@ int game(csfml_t *info, obj_t *obj, background_t *bg);
 int run_game(csfml_t *info, obj_t *obj, background_t *bg);
 void display_player(csfml_t *info, player_t *player);
 fireball_t *init_fireball(sfVector2f *pos);
-void free_all(csfml_t *info);
+void free_all(csfml_t *info, obj_t *obj, background_t *bg);
 int game_parameters(void);
 void launch_fireball(csfml_t *info, player_t *player);
 void gest_player(csfml_t *info, player_t *player);
@@ -132,6 +133,12 @@ void display_fireball(csfml_t *info, fireball_t *fireball);
 void anim_enemy(enemy_t **enemy,  csfml_t *info);
 void display_enemy(csfml_t *info, enemy_t *enemy);
 void new_enemy(enemy_t **enemy);
+void collision(csfml_t *info, obj_t *obj);
+void free_all(csfml_t *info, obj_t *obj, background_t *bg);
+void free_bg(background_t *bg);
+void free_enemy(enemy_t *enemy);
+void free_info(csfml_t *info);
+void free_player(player_t *player);
 
 //defines
 

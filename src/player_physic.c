@@ -10,19 +10,19 @@
 
 void gest_player(csfml_t *info, player_t *player)
 {
-    move_player(info, player);
+    move_player(player);
     animate_player(info, player);
     launch_fireball(info, player);
 }
 
-void move_player(csfml_t *info, player_t *player)
+void move_player(player_t *player)
 {
     if (sfKeyboard_isKeyPressed(sfKeySpace) && player->gravity > -10
     && player->pos->y > 50) {
-        player->gravity -= 1.2;
+        player->gravity -= 1.2 + (DIFFICULTY * 0.5);
     }
     else if (player->gravity < 8.5 && player->pos->y < 355) {
-        player->gravity += 1;
+        player->gravity += 1 + (DIFFICULTY * 0.5);
     }
     if (player->pos->y > 356 && !sfKeyboard_isKeyPressed(sfKeySpace))
         player->gravity = 0;
@@ -35,7 +35,7 @@ void animate_player(csfml_t *info, player_t *player)
 {
     sfTime time = sfClock_getElapsedTime(info->clock->player_anim);
 
-    if (time.microseconds > 50000 && player->rect->left != 1125) {
+    if (time.microseconds > 50000 && player->rect->left < 1125) {
         player->rect->left += 75;
         sfClock_restart(info->clock->player_anim);
     } else if (time.microseconds > 50000 && player->rect->left >= 1125) {
