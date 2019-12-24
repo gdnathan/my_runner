@@ -17,7 +17,7 @@ void collision(csfml_t *info, obj_t *obj)
     tmp = obj->enemy;
     while (tmp != NULL){
         if (dist(tmp->pos->x, tmp->pos->y, obj->player->pos->x,
-        obj->player->pos->y) <= 82 && tmp->hited_by_player == false) {
+        obj->player->pos->y) <= 8 && tmp->hited_by_player == false) {
             obj->player->health->hp -= 1;
             tmp->hited_by_player = true;
             obj->player->rect->left = 1200;
