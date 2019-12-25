@@ -15,7 +15,7 @@ void collision(csfml_t *info, obj_t *obj)
 {
     enemy_t *tmp = NULL;
 
-    if (obj->enemy == NULL || obj->player == NULL)
+    if (obj->enemy == NULL)
         return;
     tmp = obj->enemy;
     while (tmp != NULL){

@@ -39,6 +39,7 @@ enemy_t *init_enemy(void)
     new->rect->left = 0;
     new->rect->top = 0;
     new->next = NULL;
+    new->hited_by_player = false;
     sfSprite_setTexture(new->sprite, new->texture, sfTrue);
     return (new);
 }
