@@ -8,7 +8,7 @@
 #include "my.h"
 #include "math.h"
 
-int dist(int xA, int yA, int xB, int yB)
+double dist(double xA, double yA, double xB, double yB)
 {
     return (sqrt(pow((xB - xA), 2) + pow((yB - yA), 2)));
 }
