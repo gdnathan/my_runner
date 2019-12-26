@@ -23,6 +23,7 @@ SRC		=	src/main.c									\
 			src/enemies.c								\
 			src/collision.c								\
 			src/free.c 									\
+			src/hp.c									\
 
 OBJ	    =	$(SRC:.c=.o)
 

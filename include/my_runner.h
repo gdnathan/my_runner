@@ -139,6 +139,11 @@ void free_bg(background_t *bg);
 void free_enemy(enemy_t *enemy);
 void free_info(csfml_t *info);
 void free_player(player_t *player);
+void init_hp(health_t *health);
+char *nbr_to_string(int nb);
+void get_hp(csfml_t *info, player_t *player);
+void disp_3max_hp(csfml_t *info, health_t *health);
+void disp_inf_hp(csfml_t *info, health_t *health);
 
 //defines
 

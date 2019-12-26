@@ -13,6 +13,7 @@ void gest_player(csfml_t *info, player_t *player)
     move_player(player);
     animate_player(info, player);
     launch_fireball(info, player);
+    get_hp(info, player);
 }
 
 void move_player(player_t *player)

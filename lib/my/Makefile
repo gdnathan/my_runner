@@ -21,6 +21,8 @@ base_string_manipulation/my_strncat.c       \
 base_string_manipulation/my_strncmp.c       \
 base_string_manipulation/my_strncpy.c       \
 maths/dist.c								\
+nbr_test/my_nbr_to_str.c	\
+nbr_test/my_nbrlen.c        \
 
 ##here are all function of the lib.
 ##move them under SRC to start to use them
@@ -29,7 +31,6 @@ nbr_test/my_getnbr.c        \
 nbr_test/my_is_prime.c      \
 nbr_test/my_isalphanum.c    \
 nbr_test/my_isneg.c         \
-nbr_test/my_nbrlen.c        \
 nbr_test/my_swap.c          \
 calc/my_compute_power_rec.c         \
 calc/my_compute_square_root.c       \

@@ -57,3 +57,4 @@ int long_buff(long int nb, int buff_len);
 int char_buff(int nb, int buff_len);
 int flag_gest(va_list ap, char *str, int i);
 int oct_str(va_list data, char *);
+char *my_nbr_to_str(int nb);

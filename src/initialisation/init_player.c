@@ -26,6 +26,14 @@ void init_player(player_t **player)
     (*player)->gravity = 0;
     (*player)->fireball = NULL;
     (*player)->score = my_strdup("00000", 5);
-    (*player)->health->hp = MAX_HP;
+    init_hp((*player)->health);
     sfSprite_setTexture((*player)->sprite, (*player)->texture, sfTrue);
+}
+
+void init_hp(health_t *health)
+{
+    health->hp = MAX_HP;
+    health->texture = sfTexture_createFromFile("data/hp.png", NULL);
+    health->sprite = sfSprite_create();
+    sfSprite_setTexture(health->sprite, health->texture, sfTrue);
 }

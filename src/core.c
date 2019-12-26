@@ -15,6 +15,7 @@ int core(void)
     background_t bg;
     int status = 0;
 
+    //define_macro();
     init_info(&info);
     init_background(&bg);
     init_obj(&obj);
