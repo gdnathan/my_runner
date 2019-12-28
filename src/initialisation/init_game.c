@@ -21,6 +21,8 @@ void init_info(csfml_t *info)
     info->clock->compute_score = sfClock_create();
     info->clock->enemy_anim = sfClock_create();
     info->clock->enemies_spawn = sfClock_create();
+    info->clock->xp_spawn = sfClock_create();
+    info->clock->xp_anim = sfClock_create();
     init_txt(info);
 }
 

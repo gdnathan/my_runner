@@ -22,7 +22,7 @@ void disp_3max_hp(csfml_t *info, health_t *health)
     sfVector2f pos;
 
     pos.x = 30;
-    pos.y = 450;
+    pos.y = 445;
     while (i < health->hp) {
         sfSprite_setPosition(health->sprite, pos);
         sfRenderWindow_drawSprite(info->window, health->sprite, NULL);
@@ -38,10 +38,11 @@ void disp_inf_hp(csfml_t *info, health_t *health)
     sfText *current_hp = sfText_create();
 
     pos.x = 30;
-    pos.y = 450;
+    pos.y = 445;
     sfSprite_setPosition(health->sprite, pos);
     sfRenderWindow_drawSprite(info->window, health->sprite, NULL);
-    pos.x += 70;
+    pos.x += 35;
+    pos.y -= 3;
     sfText_setFont(current_hp, font);
     sfText_setColor(current_hp, sfWhite);
     sfText_setPosition(current_hp, pos);

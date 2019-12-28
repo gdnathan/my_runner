@@ -13,28 +13,7 @@ void free_all(csfml_t *info, obj_t *obj, background_t *bg)
     free_bg(bg);
     free_player(obj->player);
     free_info(info);
-}
-
-void free_player(player_t *player)
-{
-    fireball_t *del = NULL;
-
-    sfSprite_destroy(player->sprite);
-    sfTexture_destroy(player->texture);
-    if (player->fireball != NULL) {
-        del = player->fireball;
-        while (player->fireball->next != NULL) {
-            player->fireball = player->fireball->next;
-            sfSprite_destroy(del->sprite);
-            sfTexture_destroy(del->texture);
-            free (del);
-            del = player->fireball;
-        }
-        sfSprite_destroy(player->fireball->sprite);
-        sfTexture_destroy(player->fireball->texture);
-    }
-    free (player->fireball);
-    free (player);
+    free_xp(obj->xp);
 }
 
 void free_info(csfml_t *info)
@@ -49,22 +28,8 @@ void free_info(csfml_t *info)
     sfClock_destroy(info->clock->fireball_as);
     sfClock_destroy(info->clock->player_anim);
     sfClock_destroy(info->clock->time_elapsed);
-}
-
-void free_enemy(enemy_t *enemy)
-{
-    enemy_t *del = enemy;
-
-    while (enemy->next != NULL) {
-        enemy = enemy->next;
-        sfSprite_destroy(del->sprite);
-        sfTexture_destroy(del->texture);
-        free (del);
-        del = enemy;
-    }
-    sfSprite_destroy(enemy->sprite);
-    sfTexture_destroy(enemy->texture);
-    free (enemy);
+    sfClock_destroy(info->clock->xp_anim);
+    sfClock_destroy(info->clock->xp_spawn);
 }
 
 void free_bg(background_t *bg)

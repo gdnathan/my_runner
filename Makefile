@@ -12,6 +12,7 @@ SRC		=	src/main.c									\
 			src/initialisation/init_enemy.c				\
 			src/initialisation/init_obj.c				\
 			src/initialisation/init_background.c		\
+			src/initialisation/init_xp.c				\
 			src/core.c									\
 			src/infinite_mode.c							\
 			src/errors.c								\
@@ -23,7 +24,9 @@ SRC		=	src/main.c									\
 			src/enemies.c								\
 			src/collision.c								\
 			src/free.c 									\
+			src/free_obj.c								\
 			src/hp.c									\
+			src/xp.c									\
 
 OBJ	    =	$(SRC:.c=.o)
 

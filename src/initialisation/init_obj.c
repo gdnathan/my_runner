@@ -12,4 +12,5 @@ void init_obj(obj_t *obj)
 {
     init_player(&obj->player);
     obj->enemy = NULL;
+    obj->xp = NULL;
 }

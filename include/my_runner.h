@@ -23,9 +23,11 @@ typedef struct my_clock
     sfClock *player_anim;
     sfClock *fireball_as;
     sfClock *fireball_anim;
-    sfClock *enemy_anim;
     sfClock *compute_score;
     sfClock *enemies_spawn;
+    sfClock *enemy_anim;
+    sfClock *xp_spawn;
+    sfClock *xp_anim;
 } my_clock_t;
 
 typedef struct csfml_info
@@ -80,10 +82,19 @@ typedef struct enemy
     struct enemy *next;
 } enemy_t;
 
+typedef struct xp
+{
+    sfTexture *texture;
+    sfSprite *sprite;
+    sfVector2f *pos;
+    struct xp *next;
+} xp_t;
+
 typedef struct obj
 {
     player_t *player;
     enemy_t *enemy;
+    xp_t *xp;
 } obj_t;
 typedef struct background
 {
@@ -144,6 +155,13 @@ char *nbr_to_string(int nb);
 void get_hp(csfml_t *info, player_t *player);
 void disp_3max_hp(csfml_t *info, health_t *health);
 void disp_inf_hp(csfml_t *info, health_t *health);
+void spawn_xp(csfml_t *info, xp_t **xp);
+void move_xp(xp_t **xp,  csfml_t *info);
+void display_xp(csfml_t *info, xp_t *xp);
+void new_xp(xp_t **xp);
+xp_t *init_xp(void);
+void free_xp(xp_t *xp);
+
 
 //defines
 

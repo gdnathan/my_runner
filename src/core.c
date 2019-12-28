@@ -15,7 +15,6 @@ int core(void)
     background_t bg;
     int status = 0;
 
-    //define_macro();
     init_info(&info);
     init_background(&bg);
     init_obj(&obj);
@@ -42,6 +41,7 @@ int run_game(csfml_t *info, obj_t *obj, background_t *bg)
     anim_bg(info, bg);
     gest_player(info, obj->player);
     spawn_enemies(info, &obj->enemy);
+    spawn_xp(info, &obj->xp);
     collision(info, obj);
     scale_score(info, obj->player);
     sfRenderWindow_display(info->window);
