@@ -8,7 +8,7 @@
 #ifndef GAME_PARAMETERS_H_
 #define GAME_PARAMETERS_H_
 
-#define MAX_HP (3)
+#define MAX_HP (546)
 #define DIFFICULTY (0) //difficulty level: 0, 1, 2
 #define WINDOW_LEN (1267) //BASE LEN: 1267; MAX_LEN: 2534
 

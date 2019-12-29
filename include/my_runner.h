@@ -161,7 +161,9 @@ void display_xp(csfml_t *info, xp_t *xp);
 void new_xp(xp_t **xp);
 xp_t *init_xp(void);
 void free_xp(xp_t *xp);
-
+void coll_enemy(csfml_t *info, obj_t *obj);
+void coll_xp(csfml_t *info, obj_t *obj);
+void coll_inlist_xp(csfml_t *info, obj_t *obj);
 
 //defines
 

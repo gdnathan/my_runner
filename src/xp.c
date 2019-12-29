@@ -31,7 +31,7 @@ void move_xp(xp_t **xp,  csfml_t *info)
 
     while (tmp != NULL && time.microseconds > 10000) {
         tmp->pos->x -= (12 * (DIFFICULTY + 1));
-        tmp->pos->y += cos(tmp->pos->x / 100) * 12;
+        //tmp->pos->y += cos(tmp->pos->x / 100) * 12;
         tmp = tmp->next;
     }
     if ((*xp)->pos->x < -135) {
