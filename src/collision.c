@@ -29,7 +29,7 @@ void coll_enemy(csfml_t *info, obj_t *obj)
         obj->player->pos->y + 37.5) <= 87.5 && tmp->hited_by_player == false) {
             obj->player->health->hp -= 1;
             tmp->hited_by_player = true;
-            obj->player->rect->left = 1200;
+            obj->player->rect->left = PLAYER_SPRITE_LEN + PLAYER_WIDTH;
             sfSprite_setTextureRect(obj->player->sprite, *obj->player->rect);
             sfRenderWindow_drawSprite(info->window, obj->player->sprite, NULL);
         }
@@ -48,7 +48,7 @@ void coll_xp(csfml_t *info, obj_t *obj)
     delFb = obj->player->fireball;
     if (dist(obj->player->fireball->pos->x + 37.5, obj->player->fireball->pos->y
             + 37.5, obj->xp->pos->x + 35, obj->xp->pos->y + 35) <= 72.5) {
-            obj->player->score = infin_add(obj->player->score, 10);
+            obj->player->score = infin_add(obj->player->score, XP_SCORE);
             obj->player->fireball = obj->player->fireball->next;
             free(delFb);
             new_xp(&obj->xp);
@@ -69,7 +69,7 @@ void coll_inlist_xp(csfml_t *info, obj_t *obj)
     while (tmp != NULL && tmp->next != NULL) {
         if (dist(tmp->next->pos->x + 37.5, tmp->next->pos->y + 37.5,
             obj->xp->pos->x + 35, obj->xp->pos->y + 35) <= 72.5) {
-                obj->player->score = infin_add(obj->player->score, 10);
+                obj->player->score = infin_add(obj->player->score, XP_SCORE);
                 delFb = tmp->next;
                 tmp->next = tmp->next->next;
                 free (delFb);

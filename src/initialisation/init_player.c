@@ -17,10 +17,10 @@ void init_player(player_t **player)
     (*player)->texture = sfTexture_createFromFile("data/fire_mage_move.png",
                                                     NULL);
     (*player)->sprite = sfSprite_create();
-    (*player)->pos->x = 200;
-    (*player)->pos->y = 350;
-    (*player)->rect->height = 75;
-    (*player)->rect->width = 75;
+    (*player)->pos->x = PLAYER_SPAWN_X;
+    (*player)->pos->y = PLAYER_SPAWN_Y;
+    (*player)->rect->height = PLAYER_HEIGHT;
+    (*player)->rect->width = PLAYER_WIDTH;
     (*player)->rect->left = 0;
     (*player)->rect->top = 0;
     (*player)->gravity = 0;

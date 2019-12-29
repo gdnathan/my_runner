@@ -13,7 +13,7 @@ void spawn_enemies(csfml_t *info, enemy_t **enemy)
 {
     sfTime time = sfClock_getElapsedTime(info->clock->enemies_spawn);
 
-    if (time.microseconds >= (700000 - (100000 * DIFFICULTY))) {
+    if (time.microseconds >= (T_ENEMY_SPAWN - (T_DIFF_SCALE * DIFFICULTY))) {
         new_enemy(enemy);
         sfClock_restart(info->clock->enemies_spawn);
     }
@@ -28,20 +28,20 @@ void anim_enemy(enemy_t **enemy,  csfml_t *info)
     enemy_t *del = *enemy;
     sfTime time = sfClock_getElapsedTime(info->clock->enemy_anim);
 
-    while (tmp != NULL && time.microseconds > 10000) {
+    while (tmp != NULL && time.microseconds > T_ANIMATION) {
         tmp->pos->x -= (10 * (DIFFICULTY + 1));
-        tmp->rect->left += 135;
-        if (tmp->rect->left >= (135 * 3))
+        tmp->rect->left += ENEMY_WIDTH;
+        if (tmp->rect->left >= (ENEMY_SPRITE_LEN))
             tmp->rect->left = 0;
         tmp = tmp->next;
     }
-    if ((*enemy)->pos->x < -135) {
+    if ((*enemy)->pos->x < -ENEMY_WIDTH) {
         *enemy = (*enemy)->next;
         free (del);
     }
     display_enemy(info, *enemy);
     free (tmp);
-    if (time.microseconds > 10000)
+    if (time.microseconds > T_ANIMATION)
         sfClock_restart(info->clock->enemy_anim);
 }
 

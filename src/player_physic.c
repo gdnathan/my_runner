@@ -36,12 +36,14 @@ void animate_player(csfml_t *info, player_t *player)
 {
     sfTime time = sfClock_getElapsedTime(info->clock->player_anim);
 
-    if (time.microseconds > 50000 && player->rect->left < 1125) {
-        player->rect->left += 75;
-        sfClock_restart(info->clock->player_anim);
-    } else if (time.microseconds > 50000 && player->rect->left >= 1125) {
-        player->rect->left = 0;
-        sfClock_restart(info->clock->player_anim);
+    if (time.microseconds > T_ANIMATION * 5
+        && player->rect->left < PLAYER_SPRITE_LEN) {
+            player->rect->left += PLAYER_WIDTH;
+            sfClock_restart(info->clock->player_anim);
+    } else if (time.microseconds > T_ANIMATION * 5
+        && player->rect->left >= PLAYER_SPRITE_LEN) {
+            player->rect->left = 0;
+            sfClock_restart(info->clock->player_anim);
     }
     sfSprite_setTextureRect(player->sprite, *player->rect);
     sfSprite_setPosition(player->sprite, *player->pos);

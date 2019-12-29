@@ -31,7 +31,7 @@ int game(csfml_t *info, obj_t *obj, background_t *bg)
         sfRenderWindow_pollEvent(info->window, &info->my_event);
         status = run_game(info, obj, bg);
         if (info->my_event.type == sfEvtClosed)
-            status = -1;
+            status = CLOSE;
     }
     return (status);
 }
@@ -46,6 +46,6 @@ int run_game(csfml_t *info, obj_t *obj, background_t *bg)
     scale_score(info, obj->player);
     sfRenderWindow_display(info->window);
     if (obj->player->health->hp == 0)
-        return (1);
+        return (LOSE);
     return (0);
 }

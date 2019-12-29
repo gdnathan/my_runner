@@ -12,7 +12,7 @@ void scale_score(csfml_t *info, player_t *player)
 {
     sfTime time = sfClock_getElapsedTime(info->clock->compute_score);
 
-    if (time.microseconds > 1000000) {
+    if (time.microseconds > T_SCORE_SCALE) {
         player->score = infin_add(player->score, 1);
         sfClock_restart(info->clock->compute_score);
     }

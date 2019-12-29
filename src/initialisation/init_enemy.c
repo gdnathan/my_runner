@@ -34,8 +34,8 @@ enemy_t *init_enemy(void)
     new->sprite = sfSprite_create();
     new->pos->x = WINDOW_LEN;
     new->pos->y = rand() % (355 - 50) + 50;
-    new->rect->height = 100;
-    new->rect->width = 135;
+    new->rect->height = ENEMY_HEIGHT;
+    new->rect->width = ENEMY_WIDTH;
     new->rect->left = 0;
     new->rect->top = 0;
     new->next = NULL;

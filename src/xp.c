@@ -14,7 +14,7 @@ void spawn_xp(csfml_t *info, xp_t **xp)
 {
     sfTime time = sfClock_getElapsedTime(info->clock->xp_spawn);
 
-    if (time.microseconds >= (8000000)) {
+    if (time.microseconds >= (T_XP_SPAWN)) {
         new_xp(xp);
         sfClock_restart(info->clock->xp_spawn);
     }
@@ -29,9 +29,9 @@ void move_xp(xp_t **xp,  csfml_t *info)
     xp_t *del = *xp;
     sfTime time = sfClock_getElapsedTime(info->clock->xp_anim);
 
-    while (tmp != NULL && time.microseconds > 10000) {
+    while (tmp != NULL && time.microseconds > T_ANIMATION) {
         tmp->pos->x -= (12 * (DIFFICULTY + 1));
-        //tmp->pos->y += cos(tmp->pos->x / 100) * 12;
+        tmp->pos->y += cos(tmp->pos->x / 100) * 12;
         tmp = tmp->next;
     }
     if ((*xp)->pos->x < -135) {
@@ -40,7 +40,7 @@ void move_xp(xp_t **xp,  csfml_t *info)
     }
     display_xp(info, *xp);
     free (tmp);
-    if (time.microseconds > 10000)
+    if (time.microseconds > T_ANIMATION)
         sfClock_restart(info->clock->xp_anim);
 }
 

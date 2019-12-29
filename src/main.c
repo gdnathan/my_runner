@@ -9,8 +9,8 @@
 
 int main(int argc, char **argv, char **env)
 {
-    if (errors(argc, env) == 84)
-        return 84;
+    if (errors(argc, env) == ERROR)
+        return ERROR;
     if (argv[1])
         return (special_case(argv[1]));
     return (core());

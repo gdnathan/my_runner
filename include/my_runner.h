@@ -167,8 +167,6 @@ void coll_inlist_xp(csfml_t *info, obj_t *obj);
 
 //defines
 
-#define LOSE (-1)
-#define WIN (1)
 #define true (1)
 #define false (0)
 #define ERROR (84)

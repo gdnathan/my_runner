@@ -33,8 +33,8 @@ fireball_t *init_fireball(sfVector2f *pos)
     new->texture = sfTexture_createFromFile("data/fireball.png",
                                                             NULL);
     new->sprite = sfSprite_create();
-    new->rect->height = 75;
-    new->rect->width = 75;
+    new->rect->height = FIREBALL_HEIGHT;
+    new->rect->width = FIREBALL_WIDTH;
     new->rect->left = 0;
     new->rect->top = 0;
     new->pos->x = pos->x;

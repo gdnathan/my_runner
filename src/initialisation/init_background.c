@@ -21,7 +21,7 @@ void init_background(background_t *bg)
     bg->next->texture_back = sfTexture_createFromFile("data/background.png",
                                                         NULL);
     bg->next->sprite_back = sfSprite_create();
-    bg->next->pos_back->x = 2534;
+    bg->next->pos_back->x = BACKGROUND_IMG_LEN;
     bg->next->pos_back->y = 0;
     init_foreground(bg);
     sfSprite_setTexture(bg->sprite_back, bg->texture_back, sfTrue);
@@ -39,7 +39,7 @@ void init_foreground(background_t *bg)
     bg->next->texture_fore = sfTexture_createFromFile("data/foreground.png",
                                                         NULL);
     bg->next->sprite_fore = sfSprite_create();
-    bg->next->pos_fore->x = 2534;
+    bg->next->pos_fore->x = BACKGROUND_IMG_LEN;
     bg->next->pos_fore->y = 0;
     sfSprite_setTexture(bg->sprite_fore, bg->texture_fore, sfTrue);
     sfSprite_setTexture(bg->next->sprite_fore, bg->next->texture_fore, sfTrue);

@@ -12,20 +12,20 @@ void anim_bg(csfml_t *info, background_t *bg)
 {
     sfTime time = sfClock_getElapsedTime(info->clock->bg_anim);
 
-    if (time.microseconds < 10000)
+    if (time.microseconds < T_ANIMATION)
         return;
     bg->pos_back->x -= 2 * (DIFFICULTY + 1);
     bg->next->pos_back->x -= 2 * (DIFFICULTY + 1);
-    if (bg->pos_back->x < -2534)
-        bg->pos_back->x = 2534;
-    if (bg->next->pos_back->x < -2534)
-        bg->next->pos_back->x = 2534;
+    if (bg->pos_back->x < -BACKGROUND_IMG_LEN)
+        bg->pos_back->x = BACKGROUND_IMG_LEN;
+    if (bg->next->pos_back->x < -BACKGROUND_IMG_LEN)
+        bg->next->pos_back->x = BACKGROUND_IMG_LEN;
     bg->pos_fore->x -= 5 * (DIFFICULTY + 1);
     bg->next->pos_fore->x -= 5 * (DIFFICULTY + 1);
-    if (bg->pos_fore->x < -2534)
-        bg->pos_fore->x = bg->next->pos_fore->x + 2534;
-    if (bg->next->pos_fore->x < -2534)
-        bg->next->pos_fore->x =  bg->pos_fore->x + 2534;
+    if (bg->pos_fore->x < -BACKGROUND_IMG_LEN)
+        bg->pos_fore->x = bg->next->pos_fore->x + BACKGROUND_IMG_LEN;
+    if (bg->next->pos_fore->x < -BACKGROUND_IMG_LEN)
+        bg->next->pos_fore->x =  bg->pos_fore->x + BACKGROUND_IMG_LEN;
     disp_bg(info, bg);
     sfClock_restart(info->clock->bg_anim);
 }
