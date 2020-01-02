@@ -13,9 +13,9 @@ void new_enemy(enemy_t **enemy)
 {
     enemy_t *new = NULL;
 
-    if (*enemy == NULL) {
+    if (*enemy == NULL || enemy == NULL) {
         *enemy = init_enemy();
-    } else {
+    } else if (*enemy != NULL){
         new = *enemy;
         while (new->next != NULL){
             new = new->next;

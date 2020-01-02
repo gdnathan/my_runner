@@ -6,6 +6,7 @@
 ##
 
 SRC		=	src/main.c									\
+			src/get_next_line.c							\
 			src/initialisation/init_game.c				\
 			src/initialisation/init_player.c			\
 			src/initialisation/init_fireball.c			\
@@ -14,6 +15,7 @@ SRC		=	src/main.c									\
 			src/initialisation/init_background.c		\
 			src/initialisation/init_xp.c				\
 			src/core.c									\
+			src/core_infinite.c							\
 			src/infinite_mode.c							\
 			src/errors.c								\
 			src/special_case.c							\
@@ -27,6 +29,8 @@ SRC		=	src/main.c									\
 			src/free_obj.c								\
 			src/hp.c									\
 			src/xp.c									\
+			src/main_menu.c								\
+			src/parameters.c							\
 
 OBJ	    =	$(SRC:.c=.o)
 

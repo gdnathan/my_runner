@@ -11,13 +11,15 @@ int special_case(char *arg)
 {
     char *msg = "Arguments possible:"
     "\n\t-i           -> infinite mode\n\t-h / --help  -> display this help"
-    "\n\nCommands:\n\n\tspace: fly\n\tenter: attack\n\nHave a good time!\n";
+    "\n\nCommands:\n\n\tspace: fly\n\tE: attack\n\nHave a good time!\n";
 
     if (my_strcmp(arg, "-h") == 1 || my_strcmp(arg, "--help") == 1) {
         my_putstr("Welcome to the Dark Forest Rush!\n\n");
         my_putstr(msg);
     } else if (my_strcmp(arg, "-i") == 1)
-        return (infinite_mode());
+        return (core_infinite());
+    if (my_strcmp(arg, "spawn_pattern") == 1)
+        return (core(arg));
     else {
         my_putstr("Wrong token\n\n");
         my_putstr(msg);

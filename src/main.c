@@ -13,5 +13,5 @@ int main(int argc, char **argv, char **env)
         return ERROR;
     if (argv[1])
         return (special_case(argv[1]));
-    return (core());
+    return (core_infinite());
 }

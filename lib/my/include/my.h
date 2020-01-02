@@ -29,6 +29,7 @@ int my_putlonglongnbr(long long int nb);
 int my_strncmp(char const *s1, char const *s2, int n);
 double dist(double xA, double yA, double xB, double yB);
 int my_strcmp(char const *s1, char const *s2);
+int my_getnbr(char const *str);
 
 
 //

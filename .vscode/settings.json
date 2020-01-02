@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "stdio.h": "c",
+        "csfml.h": "c",
+        "my_runner.h": "c"
+    }
+}

@@ -23,11 +23,11 @@ base_string_manipulation/my_strncpy.c       \
 maths/dist.c								\
 nbr_test/my_nbr_to_str.c	\
 nbr_test/my_nbrlen.c        \
+nbr_test/my_getnbr.c        \
 
 ##here are all function of the lib.
 ##move them under SRC to start to use them
 ## \
-nbr_test/my_getnbr.c        \
 nbr_test/my_is_prime.c      \
 nbr_test/my_isalphanum.c    \
 nbr_test/my_isneg.c         \

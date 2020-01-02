@@ -1,4 +1,8 @@
 ############  GAME INFO  ############
-
-MAX HP              [5]
-DIFFICULTY          [1]
+#
+BEST_SCORE
+00000
+#
+DIFFICULTY
+1
+#####EOF#####

@@ -8,6 +8,7 @@
 #include "../lib/my/include/my.h"
 #include "csfml.h"
 #include "game_parameters.h"
+#include "get_next_line.h"
 
 #ifndef MY_RUNNER_H_
 #define MY_RUNNER_H_
@@ -30,14 +31,19 @@ typedef struct my_clock
     sfClock *xp_anim;
 } my_clock_t;
 
+typedef struct parameters
+{
+    int difficulty;
+    char *best_score; 
+} params_t;
+
 typedef struct csfml_info
 {
     sfRenderWindow *window;
     sfEvent my_event;
-    sfKeyEvent my_keyEvent;
     my_clock_t *clock;
-    sfEvent event;
     sfText *txt;
+    params_t *params;
 } csfml_t;
 
 typedef struct health
@@ -112,19 +118,22 @@ typedef struct background
 
 int special_case(char *arg);
 int infinite_mode(void);
-int core(void);
+int core_infinite(void);
+int game_infinite(csfml_t *info, obj_t *obj, background_t *bg);
+int run_game_infinite(csfml_t *info, obj_t *obj, background_t *bg);
 int errors(int arg_nb, char **env);
+int core(char *);
+int game(csfml_t *info, obj_t *obj, background_t *bg, char *);
+int run_game(csfml_t *info, obj_t *obj, background_t *bg, char *);
 sfRenderWindow *create_window(int width, int height);
 void animate_player(csfml_t *info, player_t *player);
-void move_player(player_t *player);
+void move_player(csfml_t *,player_t *player);
 void disp_bg(csfml_t *info, background_t *bg);
 void init_info(csfml_t *info);
 sfRenderWindow *create_window(int width, int height);
 void init_player(player_t **player);
 void init_background(background_t *bg);
 void init_foreground(background_t *bg);
-int game(csfml_t *info, obj_t *obj, background_t *bg);
-int run_game(csfml_t *info, obj_t *obj, background_t *bg);
 void display_player(csfml_t *info, player_t *player);
 fireball_t *init_fireball(sfVector2f *pos);
 void free_all(csfml_t *info, obj_t *obj, background_t *bg);
@@ -140,6 +149,7 @@ enemy_t *init_enemy(void);
 void init_obj(obj_t *obj);
 void anim_bg(csfml_t *info, background_t *bg);
 void spawn_enemies(csfml_t *info, enemy_t **);
+int spawn_enemies_finite(csfml_t *info, enemy_t **enemy, char *patern);
 void display_fireball(csfml_t *info, fireball_t *fireball);
 void anim_enemy(enemy_t **enemy,  csfml_t *info);
 void display_enemy(csfml_t *info, enemy_t *enemy);
@@ -164,6 +174,11 @@ void free_xp(xp_t *xp);
 void coll_enemy(csfml_t *info, obj_t *obj);
 void coll_xp(csfml_t *info, obj_t *obj);
 void coll_inlist_xp(csfml_t *info, obj_t *obj);
+void load_parameters(csfml_t *info);
+int main_menu(params_t *);
+int display_main_menu(int, sfRenderWindow *, params_t *);
+int display_command_menu(int, sfRenderWindow *);
+char open_patern(char *patern);
 
 //defines
 

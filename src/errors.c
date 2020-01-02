@@ -19,17 +19,11 @@ int errors(int arg_nb, char **env)
 
 int game_parameters(void)
 {
-    if (DIFFICULTY < 0 || DIFFICULTY > 2) {
-        my_putstr("/!\\ PARAMETER ERROR!\nhere -> WINDOW_LEN = ");
-        my_putnbr(DIFFICULTY);
-        my_putstr("\nplease enter a number between 0 and 2\n");
-        return (84);
-    }
     if (WINDOW_LEN < 500 || WINDOW_LEN > 2534) {
         my_putstr("/!\\ PARAMETER ERROR!\nhere -> WINDOW_LEN = ");
         my_putnbr(WINDOW_LEN);
         my_putstr("\nplease enter a number between 500 and 2534\n");
-        return (84);
+        return (ERROR);
     }
     return (0);
 }

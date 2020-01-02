@@ -8,8 +8,7 @@
 #ifndef GAME_PARAMETERS_H_
 #define GAME_PARAMETERS_H_
 
-#define MAX_HP (546)
-#define DIFFICULTY (0) //difficulty level: 0, 1, 2
+#define MAX_HP (3)
 #define WINDOW_LEN (1267) //BASE LEN: 1267; MAX_LEN: 2534
 
 #define WINDOW_HEIGHT (481)
@@ -35,7 +34,7 @@
 #define T_ENEMY_SPAWN (700000)
 #define T_DIFF_SCALE (100000)
 #define T_ANIMATION (10000)
-#define T_FIRE_RATE (500000)
+#define T_FIRE_RATE (700000)
 #define T_SCORE_SCALE (1000000)
 #define T_XP_SPAWN (8000000)
 

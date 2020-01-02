@@ -10,20 +10,20 @@
 
 void gest_player(csfml_t *info, player_t *player)
 {
-    move_player(player);
+    move_player(info, player);
     animate_player(info, player);
     launch_fireball(info, player);
     get_hp(info, player);
 }
 
-void move_player(player_t *player)
+void move_player(csfml_t *info, player_t *player)
 {
     if (sfKeyboard_isKeyPressed(sfKeySpace) && player->gravity > -10
     && player->pos->y > 50) {
-        player->gravity -= 1.2 + (DIFFICULTY * 0.5);
+        player->gravity -= 1.2 + (info->params->difficulty * 0.5);
     }
     else if (player->gravity < 8.5 && player->pos->y < 355) {
-        player->gravity += 1 + (DIFFICULTY * 0.5);
+        player->gravity += 1 + (info->params->difficulty * 0.5);
     }
     if (player->pos->y > 356 && !sfKeyboard_isKeyPressed(sfKeySpace))
         player->gravity = 0;
