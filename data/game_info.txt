@@ -1,8 +1,11 @@
 ############  GAME INFO  ############
 #
-BEST_SCORE
+BEST_SCORE_INF
+00000
+#
+BEST_SCORE_LIM
 00000
 #
 DIFFICULTY
-1
+0
 #####EOF#####

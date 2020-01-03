@@ -22,7 +22,7 @@ void load_parameters(csfml_t *info)
     info->params = malloc(sizeof(params_t));
 
     while (status != -1) {
-        if (my_strcmp(buffer, "BEST_SCORE\n") == 1) {
+        if (my_strcmp(buffer, "BEST_SCORE_INF\n") == 1) {
             status = getline(&buffer, &nb, fd);
             info->params->best_score = my_strdup(buffer, 6);
         }

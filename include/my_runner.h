@@ -37,6 +37,18 @@ typedef struct parameters
     char *best_score; 
 } params_t;
 
+typedef struct home_screen
+{
+    sfTexture *texture0;
+    sfTexture *texture1;
+    sfTexture *texture2;
+    sfTexture *tCommand;
+    sfSprite *sprite0;
+    sfSprite *sprite1;
+    sfSprite *sprite2;
+    sfSprite *sCommand;
+} menu_t;
+
 typedef struct csfml_info
 {
     sfRenderWindow *window;
@@ -176,9 +188,13 @@ void coll_xp(csfml_t *info, obj_t *obj);
 void coll_inlist_xp(csfml_t *info, obj_t *obj);
 void load_parameters(csfml_t *info);
 int main_menu(params_t *);
-int display_main_menu(int, sfRenderWindow *, params_t *);
-int display_command_menu(int, sfRenderWindow *);
+int display_main_menu(int, sfRenderWindow *, params_t *, menu_t *);
+int display_command_menu(int status, sfRenderWindow *window, menu_t *menu);
 char open_patern(char *patern);
+void init_menu(menu_t *menu);
+void set_difficulty(params_t *params, sfVector2i mouse_pos, sfEvent event); 
+int close_menu(sfRenderWindow *window, int status);
+
 
 //defines
 

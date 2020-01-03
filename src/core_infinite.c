@@ -16,8 +16,8 @@ int core_infinite(void)
     int status = 0;
 
     load_parameters(&info);
-    //if (main_menu(info.params) == CLOSE)
-    //    return (CLOSE);
+    if (main_menu(info.params) == CLOSE)
+        return (CLOSE);
     init_info(&info);
     init_background(&bg);
     init_obj(&obj);

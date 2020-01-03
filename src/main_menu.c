@@ -12,52 +12,42 @@ int main_menu(params_t *params)
 {
     int status = 1;
     sfRenderWindow *window = create_window(640, 481);
+    menu_t menu;
 
+    init_menu(&menu);
     while (status != CLOSE && status != 0) {
         if (status == 3)
-            status = display_command_menu(status, window);
+            status = display_command_menu(status, window, &menu);
         else
-            status = display_main_menu(status, window, params);
+            status = display_main_menu(status, window, params, &menu);
+    status = close_menu(window, status);
+    sfRenderWindow_display(window);
     }
     sfRenderWindow_destroy(window);
     return (status);
 }
 
-int display_main_menu(int status, sfRenderWindow *window, params_t *params)
+int display_main_menu(int status, sfRenderWindow *window,
+                    params_t *params, menu_t *menu)
 {
-    sfTexture *texture0;
-    sfTexture *texture1;
-    sfTexture *texture2;
-    sfSprite *sprite0;
-    sfSprite *sprite1;
-    sfSprite *sprite2;
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(window);
     sfEvent event;
 
     sfRenderWindow_pollEvent(window, &event);
-    texture0 = sfTexture_createFromFile("data/home_screen_easy.png", NULL);
-    texture1 = sfTexture_createFromFile("data/home_screen_medium.png", NULL);
-    texture2 = sfTexture_createFromFile("data/home_screen_hard.png", NULL);
-    sprite0 = sfSprite_create();
-    sprite1 = sfSprite_create();
-    sprite2 = sfSprite_create();
-    sfSprite_setTexture(sprite0, texture0, sfTrue);
-    sfSprite_setTexture(sprite1, texture1, sfTrue);
-    sfSprite_setTexture(sprite2, texture2, sfTrue);
-    //set_difficulty(window, params);
-    if (mouse_pos.y < 240 && mouse_pos.y > 400 && event.type ==
+    set_difficulty(params, mouse_pos, event);
+    if (mouse_pos.y > 240 && mouse_pos.y < 400 && event.type ==
     sfEvtMouseButtonPressed && event.mouseButton.button == sfMouseLeft) {
         status = 3;
     }
-    sfRenderWindow_drawSprite(window, sprite0, NULL);
+    if (mouse_pos.y > 0 && mouse_pos.y < 240 && event.type ==
+    sfEvtMouseButtonPressed && event.mouseButton.button == sfMouseLeft) {
+        status = 0;
+    }
+    if (params->difficulty == 0)
+        sfRenderWindow_drawSprite(window, menu->sprite0, NULL);
+    if (params->difficulty == 1)
+        sfRenderWindow_drawSprite(window, menu->sprite1, NULL);
+    if (params->difficulty == 2)
+        sfRenderWindow_drawSprite(window, menu->sprite2, NULL);
     return (status);
-}
-
-int display_command_menu(int status, sfRenderWindow *window)
-{
-    sfTexture *texture = sfTexture_createFromFile("commands_screen.png", NULL);
-    sfSprite *sprite = sfSprite_create();
-
-    sfSprite_setTexture(sprite, texture, sfTrue);
-    return (3);
 }

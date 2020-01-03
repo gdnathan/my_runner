@@ -14,6 +14,7 @@ SRC		=	src/main.c									\
 			src/initialisation/init_obj.c				\
 			src/initialisation/init_background.c		\
 			src/initialisation/init_xp.c				\
+			src/initialisation/init_menu.c				\
 			src/core.c									\
 			src/core_infinite.c							\
 			src/infinite_mode.c							\
@@ -31,6 +32,7 @@ SRC		=	src/main.c									\
 			src/xp.c									\
 			src/main_menu.c								\
 			src/parameters.c							\
+			src/main_menu_interaction.c					\
 
 OBJ	    =	$(SRC:.c=.o)
 
