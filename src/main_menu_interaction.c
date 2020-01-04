@@ -25,20 +25,16 @@ int display_command_menu(int status, sfRenderWindow *window, menu_t *menu)
 
 void set_difficulty(params_t *params, sfVector2i mouse_pos, sfEvent event)
 {
-
     if (mouse_pos.y > 440 && mouse_pos.y < 470 && mouse_pos.x > 256 &&
-        mouse_pos.x < 325 && event.type == sfEvtMouseButtonPressed &&
-        event.mouseButton.button == sfMouseLeft) {
+        mouse_pos.x < 325 && event.type == sfEvtMouseButtonPressed) {
             params->difficulty = 0;
     }
     if (mouse_pos.y > 440 && mouse_pos.y < 470 && mouse_pos.x > 335 &&
-        mouse_pos.x < 472 && event.type == sfEvtMouseButtonPressed &&
-        event.mouseButton.button == sfMouseLeft) {
+        mouse_pos.x < 472 && event.type == sfEvtMouseButtonPressed) {
             params->difficulty = 1;
     }
     if (mouse_pos.y > 440 && mouse_pos.y < 470 && mouse_pos.x > 500 &&
-        mouse_pos.x < 575 && event.type == sfEvtMouseButtonPressed &&
-        event.mouseButton.button == sfMouseLeft) {
+        mouse_pos.x < 575 && event.type == sfEvtMouseButtonPressed) {
             params->difficulty = 2;
     }
 }

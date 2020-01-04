@@ -14,23 +14,21 @@
 
 void load_parameters(csfml_t *info)
 {
-    FILE *fd = fopen("data/game_info.txt", "r+");
+    FILE *fd = fopen("data/game_info", "r+");
     char *buffer = NULL;
     size_t nb = 0;
+    int i = 0;
     int status = 0;
-    status = getline(&buffer, &nb, fd);
     info->params = malloc(sizeof(params_t));
-
-    while (status != -1) {
-        if (my_strcmp(buffer, "BEST_SCORE_INF\n") == 1) {
-            status = getline(&buffer, &nb, fd);
-            info->params->best_score = my_strdup(buffer, 6);
-        }
-        if (my_strcmp(buffer, "DIFFICULTY\n") == 1) {
-            status = getline(&buffer, &nb, fd);
-            info->params->difficulty = my_getnbr(buffer);
-        }
+    info->params->best_scores = malloc(sizeof(char *) * 6);
+    status = getline(&buffer, &nb, fd);
+    while (i < 6) {
+        info->params->best_scores[i] = my_strdup(buffer, 5);
         status = getline(&buffer, &nb, fd);
+        i += 1;
     }
+
+    info->params->difficulty = my_getnbr(buffer);
+
     fclose(fd);
 }

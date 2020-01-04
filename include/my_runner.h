@@ -33,8 +33,8 @@ typedef struct my_clock
 
 typedef struct parameters
 {
+    char **best_scores;
     int difficulty;
-    char *best_score; 
 } params_t;
 
 typedef struct home_screen
@@ -187,14 +187,17 @@ void coll_enemy(csfml_t *info, obj_t *obj);
 void coll_xp(csfml_t *info, obj_t *obj);
 void coll_inlist_xp(csfml_t *info, obj_t *obj);
 void load_parameters(csfml_t *info);
-int main_menu(params_t *);
+int main_menu(params_t *, bool infinite);
 int display_main_menu(int, sfRenderWindow *, params_t *, menu_t *);
 int display_command_menu(int status, sfRenderWindow *window, menu_t *menu);
 char open_patern(char *patern);
 void init_menu(menu_t *menu);
 void set_difficulty(params_t *params, sfVector2i mouse_pos, sfEvent event); 
 int close_menu(sfRenderWindow *window, int status);
-
+void save_game(params_t *params);
+void print_best_score(sfRenderWindow *window, bool infinite, params_t *params);
+void scale_score_toTheInfiniteAndBeyond(csfml_t *info, player_t *player);
+int comparator(char *nb1, char *nb2);
 
 //defines
 

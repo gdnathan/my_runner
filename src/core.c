@@ -16,13 +16,14 @@ int core(char *patern)
     int status = 0;
 
     load_parameters(&info);
-    if (main_menu(info.params) == CLOSE)
+    if (main_menu(info.params, false) == CLOSE)
         return (CLOSE);
     init_info(&info);
     init_background(&bg);
     init_obj(&obj);
     status = game(&info, &obj, &bg, patern);
     free_all(&info, &obj, &bg);
+    save_game(info.params);
     return (status);
 }
 

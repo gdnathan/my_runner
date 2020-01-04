@@ -16,13 +16,14 @@ int core_infinite(void)
     int status = 0;
 
     load_parameters(&info);
-    if (main_menu(info.params) == CLOSE)
+    if (main_menu(info.params, true) == CLOSE)
         return (CLOSE);
     init_info(&info);
     init_background(&bg);
     init_obj(&obj);
     status = game_infinite(&info, &obj, &bg);
     free_all(&info, &obj, &bg);
+    save_game(info.params);
     return (status);
 }
 
@@ -46,7 +47,7 @@ int run_game_infinite(csfml_t *info, obj_t *obj, background_t *bg)
     spawn_enemies(info, &obj->enemy);
     spawn_xp(info, &obj->xp);
     collision(info, obj);
-    scale_score(info, obj->player);
+    scale_score_toTheInfiniteAndBeyond(info, obj->player);
     sfRenderWindow_display(info->window);
     if (obj->player->health->hp == 0)
         return (LOSE);

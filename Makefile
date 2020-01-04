@@ -33,6 +33,7 @@ SRC		=	src/main.c									\
 			src/main_menu.c								\
 			src/parameters.c							\
 			src/main_menu_interaction.c					\
+			src/save.c									\
 
 OBJ	    =	$(SRC:.c=.o)
 
