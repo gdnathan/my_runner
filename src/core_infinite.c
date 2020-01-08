@@ -47,7 +47,7 @@ int run_game_infinite(csfml_t *info, obj_t *obj, background_t *bg)
     spawn_enemies(info, &obj->enemy);
     spawn_xp(info, &obj->xp);
     collision(info, obj);
-    scale_score_toTheInfiniteAndBeyond(info, obj->player);
+    scale_score_infinite(info, obj->player);
     sfRenderWindow_display(info->window);
     if (obj->player->health->hp == 0)
         return (LOSE);

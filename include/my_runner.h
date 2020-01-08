@@ -196,7 +196,7 @@ void set_difficulty(params_t *params, sfVector2i mouse_pos, sfEvent event);
 int close_menu(sfRenderWindow *window, int status);
 void save_game(params_t *params);
 void print_best_score(sfRenderWindow *window, bool infinite, params_t *params);
-void scale_score_toTheInfiniteAndBeyond(csfml_t *info, player_t *player);
+void scale_score_infinite(csfml_t *info, player_t *player);
 int comparator(char *nb1, char *nb2);
 
 //defines

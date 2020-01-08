@@ -24,7 +24,7 @@ void scale_score(csfml_t *info, player_t *player)
     }
 }
 
-void scale_score_toTheInfiniteAndBeyond(csfml_t *info, player_t *player)
+void scale_score_infinite(csfml_t *info, player_t *player)
 {
     sfTime time = sfClock_getElapsedTime(info->clock->compute_score);
 
