@@ -35,5 +35,6 @@ xp_t *init_xp(void)
     new->pos->y = rand() % (355 - 50) + 50;
     new->next = NULL;
     sfSprite_setTexture(new->sprite, new->texture, sfTrue);
+    new->destroyed = NULL;
     return (new);
 }

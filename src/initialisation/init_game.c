@@ -23,6 +23,10 @@ void init_info(csfml_t *info)
     info->clock->enemies_spawn = sfClock_create();
     info->clock->xp_spawn = sfClock_create();
     info->clock->xp_anim = sfClock_create();
+    info->music = sfMusic_createFromFile("data/code_lyoko_yassir.ogg");
+    sfMusic_setLoop(info->music, sfTrue);
+    sfMusic_setVolume(info->music, 50);
+    sfMusic_play(info->music);
     init_txt(info);
 }
 

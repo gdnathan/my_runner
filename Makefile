@@ -34,6 +34,7 @@ SRC		=	src/main.c									\
 			src/parameters.c							\
 			src/main_menu_interaction.c					\
 			src/save.c									\
+			src/collision_sound.c						\
 
 OBJ	    =	$(SRC:.c=.o)
 
@@ -49,7 +50,7 @@ DOLIB:
 	$(MAKE) -C ./lib/my
 
 $(NAME): DOLIB $(OBJ)
-	$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(LIB) -l csfml-graphics -l csfml-system -l csfml-window -l csfml-graphics -lm -ldl
+	$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(LIB) -l csfml-graphics -l csfml-system -l csfml-audio -l csfml-window -l csfml-graphics -lm -ldl
 
 
 clean:
@@ -57,7 +58,7 @@ clean:
 	$(MAKE) clean -C lib/my
 
 debug:	DOLIB
-	$(CC) -o my_runner $(SRC) $(CFLAGS) $(LIB) -l csfml-graphics -l csfml-system -l csfml-window -l csfml-graphics -lm -ldl -W -Wall -Wextra -g
+	$(CC) -o my_runner $(SRC) $(CFLAGS) $(LIB) -l csfml-graphics -l csfml-system -l csfml-window -l csfml-graphics -l csfml-audio -lm -ldl -W -Wall -Wextra -g
 
 test: fclean $(LIB) $(OBJ)
 	$(CC) -o unit_tests -Iinclude $(SRC) $(LIB) tests/test.c --coverage -lcriterion

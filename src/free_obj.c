@@ -41,6 +41,7 @@ void free_player(player_t *player)
         sfSprite_destroy(player->fireball->sprite);
         sfTexture_destroy(player->fireball->texture);
     }
+    free (player->hited);
     free (player->fireball);
     free (player);
 }
@@ -51,5 +52,6 @@ void free_xp(xp_t *xp)
         return;
     sfSprite_destroy(xp->sprite);
     sfTexture_destroy(xp->texture);
+    free (xp->destroyed);
     free(xp);
 }

@@ -28,6 +28,7 @@ void init_player(player_t **player)
     (*player)->score = my_strdup("00000", 5);
     init_hp((*player)->health);
     sfSprite_setTexture((*player)->sprite, (*player)->texture, sfTrue);
+    (*player)->hited = NULL;
 }
 
 void init_hp(health_t *health)

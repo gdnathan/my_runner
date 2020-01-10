@@ -13,7 +13,8 @@ int display_command_menu(int status, sfRenderWindow *window, menu_t *menu)
     sfEvent event;
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(window);
 
-    sfRenderWindow_pollEvent(window, &event);
+    if (sfRenderWindow_pollEvent(window, &event) == sfFalse)
+        return (status);
     sfRenderWindow_drawSprite(window, menu->sCommand, NULL);
     if (mouse_pos.y > 0 && mouse_pos.y < 50 && mouse_pos.x > 0 &&
         mouse_pos.x < 100 && event.type == sfEvtMouseButtonPressed &&
@@ -44,7 +45,8 @@ int close_menu(sfRenderWindow *window, int status)
     sfEvent event;
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(window);
 
-    sfRenderWindow_pollEvent(window, &event);
+    if (sfRenderWindow_pollEvent(window, &event) == sfFalse)
+        return (status);
     mouse_pos = sfMouse_getPositionRenderWindow(window);
     if (event.type == sfEvtClosed || (mouse_pos.y > 435 && mouse_pos.y < 475 &&
         mouse_pos.x > 7 && mouse_pos.x < 91 && event.type ==

@@ -27,6 +27,7 @@ void coll_enemy(csfml_t *info, obj_t *obj)
     while (tmp != NULL){
         if (dist(tmp->pos->x + 50, tmp->pos->y + 50, obj->player->pos->x + 37.5,
         obj->player->pos->y + 37.5) <= 87.5 && tmp->hited_by_player == false) {
+            set_music_collision(obj->player->hited);
             obj->player->health->hp -= 1;
             tmp->hited_by_player = true;
             obj->player->rect->left = PLAYER_SPRITE_LEN + PLAYER_WIDTH;
@@ -47,7 +48,8 @@ void coll_xp(csfml_t *info, obj_t *obj)
     del = obj->xp;
     delFb = obj->player->fireball;
     if (dist(obj->player->fireball->pos->x + 37.5, obj->player->fireball->pos->y
-            + 37.5, obj->xp->pos->x + 35, obj->xp->pos->y + 35) <= 72.5) {
+        + 37.5, obj->xp->pos->x + 35, obj->xp->pos->y + 35) <= 72.5) {
+            set_music_xp(obj->xp->destroyed);
             obj->player->score = infin_add(obj->player->score, XP_SCORE);
             obj->player->fireball = obj->player->fireball->next;
             free(delFb);
@@ -69,6 +71,7 @@ void coll_inlist_xp(csfml_t *info, obj_t *obj)
     while (tmp != NULL && tmp->next != NULL) {
         if (dist(tmp->next->pos->x + 37.5, tmp->next->pos->y + 37.5,
             obj->xp->pos->x + 35, obj->xp->pos->y + 35) <= 72.5) {
+                set_music_xp(obj->xp->destroyed);
                 obj->player->score = infin_add(obj->player->score, XP_SCORE);
                 delFb = tmp->next;
                 tmp->next = tmp->next->next;

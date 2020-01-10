@@ -30,6 +30,7 @@ void free_info(csfml_t *info)
     sfClock_destroy(info->clock->time_elapsed);
     sfClock_destroy(info->clock->xp_anim);
     sfClock_destroy(info->clock->xp_spawn);
+    sfMusic_destroy(info->music);
 }
 
 void free_bg(background_t *bg)

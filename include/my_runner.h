@@ -56,6 +56,7 @@ typedef struct csfml_info
     my_clock_t *clock;
     sfText *txt;
     params_t *params;
+    sfMusic *music;
 } csfml_t;
 
 typedef struct health
@@ -75,6 +76,7 @@ typedef struct fireball
     sfVector2f *pos;
     bool used;
     struct fireball *next;
+    sfSound *launch;
 } fireball_t;
 
 typedef struct player
@@ -87,6 +89,7 @@ typedef struct player
     char *score;
     health_t *health;
     fireball_t *fireball;
+    sfSound *hited;
 } player_t;
 
 typedef struct enemy
@@ -106,6 +109,7 @@ typedef struct xp
     sfSprite *sprite;
     sfVector2f *pos;
     struct xp *next;
+    sfSound *destroyed;
 } xp_t;
 
 typedef struct obj
@@ -198,6 +202,8 @@ void save_game(params_t *params);
 void print_best_score(sfRenderWindow *window, bool infinite, params_t *params);
 void scale_score_infinite(csfml_t *info, player_t *player);
 int comparator(char *nb1, char *nb2);
+void set_music_xp(sfSound *destroyed);
+void set_music_collision(sfSound *hited);
 
 //defines
 

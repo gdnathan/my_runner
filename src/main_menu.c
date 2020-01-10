@@ -34,15 +34,16 @@ int display_main_menu(int status, sfRenderWindow *window,
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(window);
     sfEvent event;
-    sfRenderWindow_pollEvent(window, &event);
-    set_difficulty(params, mouse_pos, event);
-    if (mouse_pos.y > 240 && mouse_pos.y < 400 && event.type ==
-    sfEvtMouseButtonPressed && event.mouseButton.button == sfMouseLeft) {
-        status = 3;
-    }
-    if (mouse_pos.y > 0 && mouse_pos.y < 240 && event.type ==
-    sfEvtMouseButtonPressed && event.mouseButton.button == sfMouseLeft) {
-        status = 0;
+    if (sfRenderWindow_pollEvent(window, &event) != sfFalse) {
+        set_difficulty(params, mouse_pos, event);
+        if (mouse_pos.y > 240 && mouse_pos.y < 400 && event.type ==
+        sfEvtMouseButtonPressed && event.mouseButton.button == sfMouseLeft) {
+            status = 3;
+        }
+        if (mouse_pos.y > 0 && mouse_pos.y < 240 && event.type ==
+        sfEvtMouseButtonPressed && event.mouseButton.button == sfMouseLeft) {
+            status = 0;
+        }
     }
     if (params->difficulty == 0)
         sfRenderWindow_drawSprite(window, menu->sprite0, NULL);

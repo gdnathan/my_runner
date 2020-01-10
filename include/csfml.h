@@ -14,5 +14,6 @@
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/Window/Keyboard.h>
 #include <SFML/Graphics/Text.h>
+#include <SFML/Audio.h>
 
 #endif /* !MYCSFML_H_ */

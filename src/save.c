@@ -10,6 +10,8 @@
 
 void save_game(params_t *params)
 {
+    if (MAX_HP > 3)
+        return;
     FILE *fd = fopen("data/game_info", "w");
     int i = 0;
     char *diff = NULL;

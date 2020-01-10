@@ -12,6 +12,7 @@
 void new_fireball(fireball_t **fireball, sfVector2f *pos)
 {
     fireball_t *new = NULL;
+    sfSoundBuffer *buffer = NULL;
 
     if (*fireball == NULL) {
         *fireball = init_fireball(pos);
@@ -22,6 +23,12 @@ void new_fireball(fireball_t **fireball, sfVector2f *pos)
         }
         new->next = init_fireball(pos);
     }
+    if ((*fireball)->launch != NULL)
+        free ((*fireball)->launch);
+    (*fireball)->launch = sfSound_create();
+    buffer = sfSoundBuffer_createFromFile("data/lauch.wav");
+    sfSound_setBuffer((*fireball)->launch, buffer);
+    sfSound_play((*fireball)->launch);
 }
 
 fireball_t *init_fireball(sfVector2f *pos)
@@ -43,5 +50,6 @@ fireball_t *init_fireball(sfVector2f *pos)
     new->next = NULL;
     sfSprite_setTexture(new->sprite, new->texture,
                         sfTrue);
+    new->launch = NULL;
     return (new);
 }
